@@ -10,17 +10,22 @@ export const metadata: Metadata = {
 
 export default function Proposta() {
   return (
-    <section className="secao">
-      <div className="container documento" style={{ maxWidth: 820 }}>
-        <span className="etiqueta">Atividade 1 · Soluções para as empresas e para a feira</span>
-        <h1>Proposta do grupo de {equipe.curso}</h1>
-        <p className="suave">
-          Uma única atividade com duas demandas complementares. As duas soluções já estão implementadas e publicadas
-          neste site.
+    <>
+    <section className="cabecalho-pagina">
+      <div className="container" style={{ maxWidth: 880 }}>
+        <span className="sobretitulo">Atividade 1 · Soluções para as empresas e para a feira</span>
+        <h1>Proposta técnica</h1>
+        <p className="lead">
+          Grupo de {equipe.curso}. Uma atividade com duas demandas complementares; as duas soluções estão implementadas
+          e publicadas neste site.
         </p>
         <div className="botoes nao-imprimir">
-          <BotaoImprimir className="botao contorno pequeno" texto="🖨️ Imprimir / salvar PDF" />
+          <BotaoImprimir className="botao secundario pequeno" texto="Imprimir / salvar em PDF" />
         </div>
+      </div>
+    </section>
+    <section className="secao">
+      <div className="container documento" style={{ maxWidth: 880 }}>
 
         <h2>Demanda 1A — Music Cookies: Presente Musical com QR Code</h2>
         <dl>
@@ -165,5 +170,6 @@ export default function Proposta() {
         </dl>
       </div>
     </section>
+    </>
   );
 }

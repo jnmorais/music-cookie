@@ -8,13 +8,19 @@ export const metadata: Metadata = {
 
 export default function PaginaMapa() {
   return (
-    <section className="secao">
-      <div className="container">
-        <span className="etiqueta">Feira · Mapa</span>
-        <h1>Mapa das bancas</h1>
-        <p className="suave">Toque em uma banca para ver o que ela oferece. A posição das bancas é confirmada na montagem.</p>
-        <Mapa />
-      </div>
-    </section>
+    <>
+      <section className="cabecalho-pagina">
+        <div className="container">
+          <span className="sobretitulo">Feira · Localização</span>
+          <h1>Mapa das bancas</h1>
+          <p className="lead">Selecione uma banca para ver os detalhes. A disposição final é confirmada na montagem do evento.</p>
+        </div>
+      </section>
+      <section className="secao">
+        <div className="container">
+          <Mapa />
+        </div>
+      </section>
+    </>
   );
 }

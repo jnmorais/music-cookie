@@ -8,13 +8,19 @@ export const metadata: Metadata = {
 
 export default function PaginaResultados() {
   return (
-    <section className="secao">
-      <div className="container">
-        <span className="etiqueta">Feira · Painel ao vivo</span>
-        <h1>Painel da feira</h1>
-        <p className="suave">Atualiza sozinho a cada 10 segundos — ideal para deixar aberto em uma TV ou projetor.</p>
-        <Painel />
-      </div>
-    </section>
+    <>
+      <section className="cabecalho-pagina">
+        <div className="container">
+          <span className="sobretitulo">Feira · Indicadores</span>
+          <h1>Painel ao vivo</h1>
+          <p className="lead">Atualização automática a cada 10 segundos. Indicado para exibição em TV ou projetor.</p>
+        </div>
+      </section>
+      <section className="secao">
+        <div className="container">
+          <Painel />
+        </div>
+      </section>
+    </>
   );
 }

@@ -9,15 +9,15 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: {
-    default: "Music Cookies × Feira de Empreendedorismo",
-    template: "%s · Music Cookies × Feira",
+    default: "Music Cookies · Feira de Empreendedorismo",
+    template: "%s · Music Cookies",
   },
   description:
     "Presentes musicais com QR Code para a Music Cookies e portal digital da Feira de Empreendedorismo (03/11): mapa, expositores, votação e painel.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#3b2416",
+  themeColor: "#111827",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

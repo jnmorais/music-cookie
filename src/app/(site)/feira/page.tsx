@@ -1,5 +1,7 @@
+import { CalendarDays, Clock, LifeBuoy, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Monograma from "@/components/Monograma";
 import { feira } from "@/lib/config";
 import { expositores } from "@/lib/expositores";
 import Contagem from "./Contagem";
@@ -12,45 +14,65 @@ export const metadata: Metadata = {
 export default function Feira() {
   return (
     <>
-      <section className="hero hero-feira">
-        <div className="container">
-          <span className="etiqueta">{feira.dataTexto} · {feira.horario}</span>
-          <h1>{feira.nome}</h1>
-          <p className="lead">
-            {feira.local}. Descubra os empreendimentos dos alunos, encontre as bancas no mapa e vote na sua favorita.
-          </p>
-          <Contagem />
-          <div className="botoes" style={{ marginTop: 20 }}>
-            <Link className="botao feira" href="/feira/mapa">
-              🗺️ Mapa das bancas
-            </Link>
-            <Link className="botao verde" href="/feira/votar">
-              ⭐ Votar na favorita
-            </Link>
-            <Link className="botao contorno" href="/feira/resultados">
-              📊 Painel ao vivo
-            </Link>
+      <section className="cabecalho-pagina">
+        <div className="container layout-lateral" style={{ alignItems: "center" }}>
+          <div>
+            <span className="sobretitulo">Demanda 1B · Portal do evento</span>
+            <h1>{feira.nome}</h1>
+            <p className="lead">
+              Conheça os empreendimentos dos alunos, localize as bancas no pátio e registre sua avaliação.
+            </p>
+            <div className="botoes">
+              <Link className="botao" href="/feira/mapa">
+                Mapa das bancas
+              </Link>
+              <Link className="botao secundario" href="/feira/votar">
+                Votar
+              </Link>
+              <Link className="botao secundario" href="/feira/resultados">
+                Painel ao vivo
+              </Link>
+            </div>
+          </div>
+          <div className="cartao" style={{ padding: 20 }}>
+            <dl className="dados" style={{ gridTemplateColumns: "24px 1fr", alignItems: "center" }}>
+              <dt>
+                <CalendarDays size={18} aria-label="Data" />
+              </dt>
+              <dd>{feira.dataTexto}</dd>
+              <dt>
+                <Clock size={18} aria-label="Horário" />
+              </dt>
+              <dd>{feira.horario}</dd>
+              <dt>
+                <MapPin size={18} aria-label="Local" />
+              </dt>
+              <dd>{feira.local}</dd>
+            </dl>
+            <div style={{ borderTop: "1px solid var(--borda)", marginTop: 16, paddingTop: 16 }}>
+              <Contagem />
+            </div>
           </div>
         </div>
       </section>
 
       <section className="secao">
         <div className="container">
-          <h2>Expositores</h2>
+          <div className="cartao-titulo">
+            <h2>Expositores</h2>
+            <span className="selo">{expositores.length} empreendimentos</span>
+          </div>
           <div className="grade">
             {expositores.map((e) => (
-              <Link
-                key={e.slug}
-                href={`/feira/expositores/${e.slug}`}
-                className="cartao expositor"
-                style={{ "--cor": e.cor } as React.CSSProperties}
-              >
-                <span className="icone" aria-hidden>
-                  {e.emoji}
-                </span>
-                <strong>{e.nome}</strong>
-                <span className="suave pequeno">{e.categoria}</span>
-                <span className="pequeno">{e.resumo}</span>
+              <Link key={e.slug} href={`/feira/expositores/${e.slug}`} className="cartao expositor">
+                <div className="expositor-topo">
+                  <Monograma expositor={e} />
+                  <div>
+                    <strong>{e.nome}</strong>
+                    <span className="suave pequeno">{e.categoria}</span>
+                  </div>
+                </div>
+                <span className="pequeno suave">{e.resumo}</span>
               </Link>
             ))}
           </div>
@@ -60,28 +82,21 @@ export default function Feira() {
       <section className="secao">
         <div className="container grade-2">
           <div className="cartao">
-            <h2>Informações</h2>
-            <ul>
-              <li>
-                <strong>Quando:</strong> {feira.dataTexto}, {feira.horario}
-              </li>
-              <li>
-                <strong>Onde:</strong> {feira.local}
-              </li>
-              <li>{feira.destaque} Chegue um pouco antes para aproveitar com calma.</li>
-              <li>Os grupos vendem nas bancas; confira formas de pagamento em cada uma.</li>
+            <h3>Orientações ao visitante</h3>
+            <ul className="pequeno" style={{ margin: 0 }}>
+              <li>{feira.destaque} Chegue com antecedência para circular com tranquilidade.</li>
+              <li>As vendas são feitas diretamente nas bancas; confira as formas de pagamento em cada uma.</li>
+              <li>Ao final da visita, registre seu voto e sua avaliação do evento.</li>
             </ul>
           </div>
           <div className="cartao">
-            <h2>Precisa de ajuda?</h2>
-            <p>
-              Procure a banca <strong>Suporte TI (SI/ES)</strong> no mapa. Os alunos de Sistemas de Informação e
-              Engenharia de Software estão na feira para ajudar visitantes e expositores com os QR Codes, a votação e o
-              portal.
-            </p>
-            <p className="suave pequeno">
-              Acessibilidade: use os botões <strong>A+</strong> (texto maior) e <strong>◐</strong> (alto contraste) no
-              topo da página.
+            <div className="icone-caixa">
+              <LifeBuoy size={20} aria-hidden />
+            </div>
+            <h3>Suporte e acessibilidade</h3>
+            <p className="pequeno suave" style={{ margin: 0 }}>
+              A equipe de Sistemas de Informação e Engenharia de Software atende no ponto <strong>Suporte TI</strong>{" "}
+              indicado no mapa. No topo da página há opções de texto ampliado e alto contraste.
             </p>
           </div>
         </div>

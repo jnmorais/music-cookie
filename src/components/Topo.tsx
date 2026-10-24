@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import Acessibilidade from "./Acessibilidade";
 
 const links = [
+  { href: "/", texto: "Visão geral" },
   { href: "/music-cookies", texto: "Music Cookies" },
   { href: "/feira", texto: "Feira" },
   { href: "/feira/mapa", texto: "Mapa" },
-  { href: "/feira/votar", texto: "Votar" },
+  { href: "/feira/votar", texto: "Votação" },
+  { href: "/feira/resultados", texto: "Painel" },
   { href: "/proposta", texto: "Proposta" },
 ];
 
@@ -18,7 +20,11 @@ export default function Topo() {
     <header className="topo">
       <div className="container topo-inner">
         <Link href="/" className="marca">
-          <span aria-hidden>🍪🎵</span> Music Cookies × Feira
+          <span className="marca-simbolo">MC</span>
+          <span className="marca-texto">
+            <strong>Music Cookies</strong>
+            <span>Feira de Empreendedorismo 2026</span>
+          </span>
         </Link>
         <nav className="nav" aria-label="Principal">
           {links.map((l) => (

@@ -11,15 +11,20 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Topo />
       <main id="conteudo">{children}</main>
       <footer className="rodape">
-        <div className="container">
-          <p>
-            Projeto acadêmico de {equipe.curso} — Atividade 1 (Demandas 1A e 1B) integrada à Feira de
-            Empreendedorismo. <Link href="/proposta">Ver proposta completa</Link>.
-          </p>
-          <p>
-            Suporte: {equipe.contatoNome}
-            {equipe.contatoEmail && <> · {equipe.contatoEmail}</>}
-          </p>
+        <div className="container rodape-inner">
+          <div>
+            <strong style={{ color: "var(--texto)" }}>Music Cookies · Feira de Empreendedorismo</strong>
+            <div>
+              Projeto acadêmico — {equipe.curso}. Suporte: {equipe.contatoNome}
+              {equipe.contatoEmail && <> · {equipe.contatoEmail}</>}
+            </div>
+          </div>
+          <nav aria-label="Rodapé">
+            <Link href="/music-cookies/presente">Presente musical</Link>
+            <Link href="/feira">Feira</Link>
+            <Link href="/feira/qrcodes">Material impresso</Link>
+            <Link href="/proposta">Proposta</Link>
+          </nav>
         </div>
       </footer>
     </>

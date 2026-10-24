@@ -13,10 +13,10 @@ export type Presente = {
 };
 
 export const temas = {
-  amor: { nome: "Amor", fundo: "#ffe3ea", destaque: "#d6336c", emoji: "💗" },
-  amizade: { nome: "Amizade", fundo: "#fff1d6", destaque: "#e8590c", emoji: "🤝" },
-  aniversario: { nome: "Aniversário", fundo: "#e7f5ff", destaque: "#1c7ed6", emoji: "🎉" },
-  obrigado: { nome: "Obrigado", fundo: "#e6fcf5", destaque: "#0ca678", emoji: "🙏" },
+  amor: { nome: "Amor", fundo: "#f6e9e9", destaque: "#9f1239" },
+  amizade: { nome: "Amizade", fundo: "#f5ede3", destaque: "#8a5a2b" },
+  aniversario: { nome: "Aniversário", fundo: "#e8edf5", destaque: "#1e3a8a" },
+  obrigado: { nome: "Agradecimento", fundo: "#e7f0ea", destaque: "#166534" },
 } as const;
 
 export type Tema = keyof typeof temas;

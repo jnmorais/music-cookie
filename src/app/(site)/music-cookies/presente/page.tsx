@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CriarPresente from "./CriarPresente";
 
 export const metadata: Metadata = {
@@ -8,18 +9,26 @@ export const metadata: Metadata = {
 
 export default function PaginaPresente() {
   return (
-    <section className="secao">
-      <div className="container">
-        <div className="nao-imprimir">
-          <span className="etiqueta cookie">Music Cookies · Presente musical</span>
-          <h1>Crie seu presente musical</h1>
-          <p className="suave" style={{ maxWidth: 640 }}>
-            Preencha os campos e a etiqueta é gerada na hora. Use o QR Code na embalagem, envie o link por mensagem ou
-            imprima as etiquetas.
+    <>
+      <section className="cabecalho-pagina nao-imprimir">
+        <div className="container">
+          <nav className="migalhas" aria-label="Navegação estrutural">
+            <Link href="/music-cookies">Music Cookies</Link>
+            <span aria-hidden>/</span>
+            <span>Presente musical</span>
+          </nav>
+          <h1>Criar presente musical</h1>
+          <p className="lead">
+            Preencha os dados e a etiqueta é gerada automaticamente. Use o QR Code na embalagem, envie o link por
+            mensagem ou imprima as etiquetas.
           </p>
         </div>
-        <CriarPresente />
-      </div>
-    </section>
+      </section>
+      <section className="secao">
+        <div className="container">
+          <CriarPresente />
+        </div>
+      </section>
+    </>
   );
 }

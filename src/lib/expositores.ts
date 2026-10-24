@@ -1,8 +1,8 @@
 export type Expositor = {
   slug: string;
   nome: string;
-  emoji: string;
   cor: string;
+  sigla?: string; // monograma; quando omitido, usa as iniciais do nome
   categoria: string;
   resumo: string;
   produtos: string[];
@@ -15,8 +15,7 @@ export const expositores: Expositor[] = [
   {
     slug: "music-cookies",
     nome: "Music Cookies",
-    emoji: "🍪",
-    cor: "#1db954",
+    cor: "#14532d",
     categoria: "Doces · Presentes",
     resumo:
       "Cookies com proposta de presente: cada embalagem traz um QR Code com uma música do Spotify e uma mensagem personalizada.",
@@ -27,8 +26,7 @@ export const expositores: Expositor[] = [
   {
     slug: "dolce-vita",
     nome: "Dolce Vita",
-    emoji: "🧁",
-    cor: "#e86fa0",
+    cor: "#9d174d",
     categoria: "Doces",
     resumo: "Doces variados com identidade visual jovem, apresentação atrativa e atendimento próximo.",
     produtos: ["Doces variados", "Encomendas para a faculdade"],
@@ -37,8 +35,8 @@ export const expositores: Expositor[] = [
   {
     slug: "moki-cookies",
     nome: "MOKI Cookies",
-    emoji: "🍪",
-    cor: "#c8873f",
+    sigla: "MK",
+    cor: "#92400e",
     categoria: "Doces",
     resumo: "Cookies artesanais, acessíveis e atrativos, com variedade de sabores e produção padronizada.",
     produtos: ["Cookies artesanais", "Vários sabores"],
@@ -47,8 +45,7 @@ export const expositores: Expositor[] = [
   {
     slug: "loja-de-brigadeiro",
     nome: "Loja de Brigadeiro",
-    emoji: "🍫",
-    cor: "#7a4a2a",
+    cor: "#5b3a24",
     categoria: "Doces gourmet",
     resumo: "Brigadeiros gourmet com preço acessível: qualidade e sofisticação para o público da feira.",
     produtos: ["Brigadeiros gourmet", "Caixinhas"],
@@ -57,8 +54,7 @@ export const expositores: Expositor[] = [
   {
     slug: "solitarium-pratas",
     nome: "Solitarium Pratas",
-    emoji: "💍",
-    cor: "#8b9bb4",
+    cor: "#475569",
     categoria: "Acessórios",
     resumo: "Loja de pratas já existente, com produtos voltados às mulheres da Geração Z.",
     produtos: ["Brincos", "Colares", "Anéis de prata"],
@@ -67,8 +63,7 @@ export const expositores: Expositor[] = [
   {
     slug: "pastel-sa",
     nome: "Pastel S&A",
-    emoji: "🥟",
-    cor: "#e0a526",
+    cor: "#a16207",
     categoria: "Salgados",
     resumo: "Pastéis feitos na hora: alimentação rápida para quem circula pelo evento.",
     produtos: ["Pastéis", "Bebidas"],
@@ -77,8 +72,7 @@ export const expositores: Expositor[] = [
   {
     slug: "grupo-de-cafes",
     nome: "Grupo de Cafés",
-    emoji: "☕",
-    cor: "#6f4e37",
+    cor: "#3f3f46",
     categoria: "Bebidas",
     resumo: "Cafés durante a feira para atender o público que circula pelo evento.",
     produtos: ["Cafés", "Bebidas quentes"],
@@ -87,10 +81,20 @@ export const expositores: Expositor[] = [
 ];
 
 export const pontosDoMapa = [
-  { id: "entrada", nome: "Entrada", emoji: "🚪", x: 50, y: 96 },
-  { id: "suporte", nome: "Suporte TI (SI/ES)", emoji: "🛟", x: 84, y: 72 },
+  { id: "entrada", nome: "Entrada", x: 50, y: 96 },
+  { id: "suporte", nome: "Suporte TI (SI/ES)", x: 84, y: 72 },
 ];
 
 export function buscarExpositor(slug: string) {
   return expositores.find((e) => e.slug === slug);
+}
+
+/** Iniciais usadas como monograma da banca (ex.: "Music Cookies" → "MC"). */
+export function sigla(nome: string) {
+  const palavras = nome
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter((p) => p && !["de", "da", "do", "das", "dos", "e"].includes(p.toLowerCase()));
+  const letras = palavras.length > 1 ? palavras.slice(0, 2).map((p) => p[0]) : [palavras[0]?.slice(0, 2) ?? ""];
+  return letras.join("").toUpperCase();
 }

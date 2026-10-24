@@ -1,7 +1,9 @@
 "use client";
 
+import { CircleCheck } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Monograma from "@/components/Monograma";
 import { expositores } from "@/lib/expositores";
 
 const CHAVE_VOTANTE = "feira-votante";
@@ -40,8 +42,8 @@ export default function Votacao() {
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
     setErro("");
-    if (!banca) return setErro("Escolha uma banca.");
-    if (!nota) return setErro("Dê uma nota para a feira.");
+    if (!banca) return setErro("Selecione uma banca.");
+    if (!nota) return setErro("Selecione uma nota para o evento.");
     setEstado("enviando");
     try {
       const res = await fetch("/api/feira/votos", {
@@ -57,29 +59,27 @@ export default function Votacao() {
         setEstado("feito");
         if (res.status === 409) setErro(dados.erro);
       } else {
-        setErro(dados.erro ?? "Algo deu errado.");
+        setErro(dados.erro ?? "Não foi possível registrar o voto.");
         setEstado("livre");
       }
     } catch {
-      setErro("Sem conexão. Tente de novo em instantes.");
+      setErro("Sem conexão. Tente novamente em instantes.");
       setEstado("livre");
     }
   }
 
   if (estado === "feito") {
     return (
-      <div className="cartao" style={{ textAlign: "center" }}>
-        <div style={{ fontSize: "3rem" }} aria-hidden>
-          💜
-        </div>
-        <h2>Voto registrado. Obrigado!</h2>
-        {erro && <p className="suave">{erro}</p>}
+      <div className="cartao" style={{ textAlign: "center", padding: 40 }}>
+        <CircleCheck size={40} strokeWidth={1.5} style={{ color: "var(--sucesso)" }} aria-hidden />
+        <h2 style={{ marginTop: 12 }}>Voto registrado</h2>
+        <p className="suave">{erro || "Obrigado por participar da avaliação."}</p>
         <div className="botoes" style={{ justifyContent: "center" }}>
-          <Link className="botao feira" href="/feira/resultados">
-            Ver painel ao vivo
+          <Link className="botao" href="/feira/resultados">
+            Ver painel
           </Link>
-          <Link className="botao contorno" href="/feira">
-            Voltar à feira
+          <Link className="botao secundario" href="/feira">
+            Voltar ao portal
           </Link>
         </div>
       </div>
@@ -89,13 +89,17 @@ export default function Votacao() {
   return (
     <form className="cartao" onSubmit={enviar}>
       <fieldset className="campo">
-        <legend>Banca favorita</legend>
-        <div className="opcoes">
+        <legend style={{ marginBottom: 8 }}>1. Banca de destaque</legend>
+        <div className="lista-opcoes">
           {expositores.map((e) => (
-            <label key={e.slug} className="opcao">
+            <label key={e.slug}>
               <input type="radio" name="banca" value={e.slug} checked={banca === e.slug} onChange={() => setBanca(e.slug)} />
-              <span>
-                {e.emoji} {e.nome}
+              <Monograma expositor={e} tamanho="mini" />
+              <span className="info">
+                <strong className="pequeno">{e.nome}</strong>
+                <span className="suave" style={{ fontSize: "0.8rem" }}>
+                  {e.categoria}
+                </span>
               </span>
             </label>
           ))}
@@ -103,34 +107,27 @@ export default function Votacao() {
       </fieldset>
 
       <fieldset className="campo">
-        <legend>Nota para a feira</legend>
-        <div className="estrelas" role="radiogroup" aria-label="Nota de 1 a 5">
+        <legend style={{ marginBottom: 8 }}>2. Avaliação geral do evento</legend>
+        <div className="segmentado">
           {[1, 2, 3, 4, 5].map((n) => (
-            <button
-              key={n}
-              type="button"
-              role="radio"
-              aria-checked={nota === n}
-              aria-label={`${n} — ${rotulos[n]}`}
-              className={n <= nota ? "ligada" : ""}
-              onClick={() => setNota(n)}
-            >
-              ★
-            </button>
+            <label key={n}>
+              <input type="radio" name="nota" value={n} checked={nota === n} onChange={() => setNota(n)} aria-label={`${n} — ${rotulos[n]}`} />
+              <span style={{ minWidth: 44 }}>{n}</span>
+            </label>
           ))}
         </div>
-        <span className="ajuda">{nota ? rotulos[nota] : "Toque nas estrelas"}</span>
+        <span className="ajuda">{nota ? `${nota} de 5 — ${rotulos[nota]}` : "1 = ruim · 5 = excelente"}</span>
       </fieldset>
 
       <div className="campo">
-        <label htmlFor="comentario">Comentário ou sugestão (opcional)</label>
+        <label htmlFor="comentario">3. Comentários ou sugestões (opcional)</label>
         <textarea
           id="comentario"
           value={comentario}
           onChange={(e) => setComentario(e.target.value.slice(0, 280))}
-          placeholder="O que você mais gostou? O que podemos melhorar?"
+          placeholder="O que funcionou bem? O que pode melhorar?"
         />
-        <span className="ajuda">Comentários são lidos pela organização e não aparecem publicamente.</span>
+        <span className="ajuda">Visível apenas para a organização.</span>
       </div>
 
       {erro && (
@@ -138,8 +135,8 @@ export default function Votacao() {
           {erro}
         </p>
       )}
-      <button className="botao verde" type="submit" disabled={estado === "enviando"}>
-        {estado === "enviando" ? "Enviando…" : "Enviar voto"}
+      <button className="botao" type="submit" disabled={estado === "enviando"}>
+        {estado === "enviando" ? "Enviando…" : "Registrar voto"}
       </button>
     </form>
   );
