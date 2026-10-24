@@ -11,9 +11,9 @@ export default function PaginaMapa() {
     <>
       <section className="cabecalho-pagina">
         <div className="container">
-          <span className="sobretitulo">Feira · Localização</span>
+          <span className="sobretitulo">Feira · Mapa</span>
           <h1>Mapa das bancas</h1>
-          <p className="lead">Selecione uma banca para ver os detalhes. A disposição final é confirmada na montagem do evento.</p>
+          <p className="lead">Toque numa banca para ver os detalhes. A posição final é confirmada na montagem.</p>
         </div>
       </section>
       <section className="secao">

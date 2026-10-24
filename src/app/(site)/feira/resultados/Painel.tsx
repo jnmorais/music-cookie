@@ -58,17 +58,17 @@ export default function Painel() {
       <div className="estatisticas" style={{ marginBottom: 24 }}>
         <div>
           <div className="valor">{dados.totalVotos}</div>
-          <div className="rotulo">Votos registrados</div>
+          <div className="rotulo">Votos até agora</div>
         </div>
         <div>
           <div className="valor">{dados.mediaFeira !== null ? dados.mediaFeira.toFixed(1).replace(".", ",") : "—"}</div>
-          <div className="rotulo">Avaliação média do evento (1 a 5)</div>
+          <div className="rotulo">Nota média da feira (1 a 5)</div>
         </div>
         <div>
           <div className="valor" style={{ fontSize: "1.25rem", paddingTop: 6 }}>
             {lider?.nome ?? "—"}
           </div>
-          <div className="rotulo">Banca em 1º lugar</div>
+          <div className="rotulo">Liderando agora</div>
         </div>
         <div>
           <div className="valor" style={{ fontSize: "1.25rem", paddingTop: 6 }}>
@@ -131,9 +131,9 @@ export default function Painel() {
         </div>
 
         <aside className="cartao" style={{ textAlign: "center" }}>
-          <h3 style={{ fontSize: "0.95rem" }}>Participe da votação</h3>
+          <h3 style={{ fontSize: "0.95rem" }}>Ainda não votou?</h3>
           <p className="suave pequeno" style={{ margin: 0 }}>
-            Aponte a câmera do celular para o código.
+            Aponte a câmera do celular aqui.
           </p>
           {origem && <QrCode valor={`${origem}/feira/votar`} alt="QR Code para votar" tamanho={400} className="qr" style={{ width: 200, height: 200, margin: "16px auto" }} />}
           <div className="suave pequeno" style={{ wordBreak: "break-all" }}>

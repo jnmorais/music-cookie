@@ -1,26 +1,27 @@
 :root {
-  --fundo: #f6f7f9;
+  --fundo: #f7f8fc;
   --superficie: #ffffff;
-  --superficie-2: #f1f3f6;
-  --texto: #111827;
-  --texto-suave: #5b6472;
-  --texto-fraco: #8a93a1;
-  --borda: #e3e6eb;
-  --borda-forte: #cfd4dc;
-  --primaria: #111827;
-  --primaria-hover: #1f2937;
-  --acento: #8a5a2b;
-  --acento-claro: #f6efe7;
+  --superficie-2: #f2f4fa;
+  --texto: #171a2e;
+  --texto-suave: #5d6280;
+  --texto-fraco: #8d91aa;
+  --borda: #e5e8f1;
+  --borda-forte: #d2d7e5;
+  --primaria: #3049d8;
+  --primaria-hover: #253bb8;
+  --primaria-clara: #eef1fe;
+  --acento: #c06a2b;
+  --acento-claro: #fbf0e6;
   --sucesso: #15803d;
   --sucesso-claro: #ecfdf3;
   --alerta-claro: #fffaeb;
   --alerta-borda: #fedf89;
   --perigo: #b42318;
   --perigo-claro: #fef3f2;
-  --raio: 8px;
-  --raio-sm: 6px;
-  --sombra: 0 1px 2px rgba(16, 24, 40, 0.05);
-  --sombra-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --raio: 14px;
+  --raio-sm: 10px;
+  --sombra: 0 1px 3px rgba(23, 26, 46, 0.05);
+  --sombra-md: 0 8px 24px rgba(48, 73, 216, 0.1);
   --fonte: var(--font-geist-sans), "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --escala: 1;
 }
@@ -35,6 +36,7 @@ html[data-contraste="alto"] {
   --borda: #000000;
   --borda-forte: #000000;
   --primaria: #000000;
+  --primaria-clara: #ffffff;
   --acento: #5a2e00;
 }
 
@@ -204,25 +206,30 @@ code {
   align-self: stretch;
 }
 
+.nav {
+  align-items: center;
+}
+
 .nav a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--texto-suave);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
 }
 
 .nav a:hover {
   color: var(--texto);
+  background: var(--superficie-2);
 }
 
 .nav a[aria-current="page"] {
-  color: var(--texto);
-  border-bottom-color: var(--primaria);
+  color: var(--primaria);
+  background: var(--primaria-clara);
+  font-weight: 600;
 }
 
 .acessibilidade {
@@ -274,8 +281,11 @@ code {
     width: calc(100% + 32px);
   }
 
+  .nav {
+    padding-bottom: 10px;
+  }
+
   .nav a {
-    padding: 10px 10px;
     white-space: nowrap;
   }
 }
@@ -358,11 +368,9 @@ code {
 /* Tipografia utilitária */
 .sobretitulo {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--texto-suave);
+  color: var(--primaria);
   margin-bottom: 10px;
 }
 
@@ -386,8 +394,8 @@ code {
   gap: 6px;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
   border: 1px solid var(--borda);
   background: var(--superficie-2);
   color: var(--texto-suave);
@@ -410,9 +418,8 @@ code {
 
 /* Cabeçalho de página */
 .cabecalho-pagina {
-  background: var(--superficie);
-  border-bottom: 1px solid var(--borda);
-  padding: 40px 0 32px;
+  background: linear-gradient(180deg, var(--primaria-clara) 0%, var(--fundo) 100%);
+  padding: 44px 0 36px;
 }
 
 .cabecalho-pagina h1 {
@@ -503,9 +510,8 @@ code {
   border-radius: var(--raio-sm);
   display: grid;
   place-items: center;
-  background: var(--superficie-2);
-  border: 1px solid var(--borda);
-  color: var(--texto);
+  background: var(--primaria-clara);
+  color: var(--primaria);
   margin-bottom: 14px;
 }
 
@@ -747,7 +753,7 @@ fieldset.campo {
 }
 
 .lista-opcoes label:has(input:checked) {
-  background: #eff4ff;
+  background: var(--primaria-clara);
 }
 
 .lista-opcoes input {
@@ -887,13 +893,17 @@ fieldset.campo {
 }
 
 .passos li::before {
-  content: counter(passo, decimal-leading-zero);
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--acento);
-  margin-bottom: 8px;
-  font-variant-numeric: tabular-nums;
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primaria-clara);
+  color: var(--primaria);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .passos strong {

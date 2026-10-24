@@ -17,10 +17,10 @@ export default function Feira() {
       <section className="cabecalho-pagina">
         <div className="container layout-lateral" style={{ alignItems: "center" }}>
           <div>
-            <span className="sobretitulo">Demanda 1B · Portal do evento</span>
+            <span className="sobretitulo">Demanda 1B · Portal da feira</span>
             <h1>{feira.nome}</h1>
             <p className="lead">
-              Conheça os empreendimentos dos alunos, localize as bancas no pátio e registre sua avaliação.
+              Descubra o que os colegas estão empreendendo, ache as bancas no pátio e vote na sua favorita.
             </p>
             <div className="botoes">
               <Link className="botao" href="/feira/mapa">
@@ -82,21 +82,21 @@ export default function Feira() {
       <section className="secao">
         <div className="container grade-2">
           <div className="cartao">
-            <h3>Orientações ao visitante</h3>
+            <h3>Dicas para aproveitar</h3>
             <ul className="pequeno" style={{ margin: 0 }}>
-              <li>{feira.destaque} Chegue com antecedência para circular com tranquilidade.</li>
-              <li>As vendas são feitas diretamente nas bancas; confira as formas de pagamento em cada uma.</li>
-              <li>Ao final da visita, registre seu voto e sua avaliação do evento.</li>
+              <li>{feira.destaque} Chegue um pouco antes para circular com calma.</li>
+              <li>As vendas são direto nas bancas — confira as formas de pagamento de cada uma.</li>
+              <li>No fim da visita, não esquece de votar na sua banca favorita.</li>
             </ul>
           </div>
           <div className="cartao">
             <div className="icone-caixa">
               <LifeBuoy size={20} aria-hidden />
             </div>
-            <h3>Suporte e acessibilidade</h3>
+            <h3>Precisa de ajuda?</h3>
             <p className="pequeno suave" style={{ margin: 0 }}>
-              A equipe de Sistemas de Informação e Engenharia de Software atende no ponto <strong>Suporte TI</strong>{" "}
-              indicado no mapa. No topo da página há opções de texto ampliado e alto contraste.
+              O pessoal de SI e Engenharia de Software fica no ponto <strong>Suporte TI</strong>{" "}
+              (está no mapa). No topo da página dá para aumentar o texto e ativar o alto contraste.
             </p>
           </div>
         </div>

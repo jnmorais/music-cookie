@@ -19,8 +19,8 @@ export default function PaginaPresente() {
           </nav>
           <h1>Criar presente musical</h1>
           <p className="lead">
-            Preencha os dados e a etiqueta é gerada automaticamente. Use o QR Code na embalagem, envie o link por
-            mensagem ou imprima as etiquetas.
+            Preencha os campos e a etiqueta aparece na hora. Cole o QR Code na embalagem, mande o link por
+            mensagem ou imprima.
           </p>
         </div>
       </section>

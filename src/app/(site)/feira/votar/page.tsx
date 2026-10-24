@@ -11,9 +11,9 @@ export default function PaginaVotar() {
     <>
       <section className="cabecalho-pagina">
         <div className="container">
-          <span className="sobretitulo">Feira · Avaliação do público</span>
-          <h1>Votação</h1>
-          <p className="lead">Escolha a banca de destaque e avalie o evento. Um registro por aparelho.</p>
+          <span className="sobretitulo">Feira · Votação</span>
+          <h1>Vote na sua banca favorita</h1>
+          <p className="lead">Leva menos de 30 segundos. Vale um voto por celular.</p>
         </div>
       </section>
       <section className="secao">

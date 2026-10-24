@@ -73,13 +73,13 @@ export default function Votacao() {
       <div className="cartao" style={{ textAlign: "center", padding: 40 }}>
         <CircleCheck size={40} strokeWidth={1.5} style={{ color: "var(--sucesso)" }} aria-hidden />
         <h2 style={{ marginTop: 12 }}>Voto registrado</h2>
-        <p className="suave">{erro || "Obrigado por participar da avaliação."}</p>
+        <p className="suave">{erro || "Valeu por participar!"}</p>
         <div className="botoes" style={{ justifyContent: "center" }}>
           <Link className="botao" href="/feira/resultados">
             Ver painel
           </Link>
           <Link className="botao secundario" href="/feira">
-            Voltar ao portal
+            Voltar para a feira
           </Link>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default function Votacao() {
   return (
     <form className="cartao" onSubmit={enviar}>
       <fieldset className="campo">
-        <legend style={{ marginBottom: 8 }}>1. Banca de destaque</legend>
+        <legend style={{ marginBottom: 8 }}>1. Sua banca favorita</legend>
         <div className="lista-opcoes">
           {expositores.map((e) => (
             <label key={e.slug}>
@@ -107,7 +107,7 @@ export default function Votacao() {
       </fieldset>
 
       <fieldset className="campo">
-        <legend style={{ marginBottom: 8 }}>2. Avaliação geral do evento</legend>
+        <legend style={{ marginBottom: 8 }}>2. Que nota você dá para a feira?</legend>
         <div className="segmentado">
           {[1, 2, 3, 4, 5].map((n) => (
             <label key={n}>
@@ -120,14 +120,14 @@ export default function Votacao() {
       </fieldset>
 
       <div className="campo">
-        <label htmlFor="comentario">3. Comentários ou sugestões (opcional)</label>
+        <label htmlFor="comentario">3. Quer deixar um comentário? (opcional)</label>
         <textarea
           id="comentario"
           value={comentario}
           onChange={(e) => setComentario(e.target.value.slice(0, 280))}
-          placeholder="O que funcionou bem? O que pode melhorar?"
+          placeholder="Do que você mais gostou? O que dá para melhorar?"
         />
-        <span className="ajuda">Visível apenas para a organização.</span>
+        <span className="ajuda">Só a organização vê os comentários.</span>
       </div>
 
       {erro && (
@@ -136,7 +136,7 @@ export default function Votacao() {
         </p>
       )}
       <button className="botao" type="submit" disabled={estado === "enviando"}>
-        {estado === "enviando" ? "Enviando…" : "Registrar voto"}
+        {estado === "enviando" ? "Enviando…" : "Enviar voto"}
       </button>
     </form>
   );

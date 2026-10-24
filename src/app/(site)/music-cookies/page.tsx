@@ -4,7 +4,7 @@ import { musicCookies } from "@/lib/config";
 import Pedido from "./Pedido";
 
 export const metadata: Metadata = {
-  title: "Music Cookies",
+  title: "Cardápio e presentes",
   description: "Cookies artesanais que viram presente: escolha uma música, escreva uma mensagem e gere o QR Code da embalagem.",
 };
 
@@ -18,8 +18,8 @@ export default function MusicCookies() {
           <span className="sobretitulo">Demanda 1A · Music Cookies</span>
           <h1>{musicCookies.slogan}</h1>
           <p className="lead">
-            Cada cookie pode ser entregue como presente: o cliente escolhe uma música do Spotify, escreve uma mensagem e
-            a embalagem recebe um QR Code exclusivo. Quem recebe escaneia e ouve a música escolhida.
+            Cada cookie pode virar presente: você escolhe uma música do Spotify, escreve uma mensagem e
+            a embalagem ganha um QR Code só seu. Quem recebe escaneia e ouve a música.
           </p>
           <div className="botoes">
             <Link className="botao" href="/music-cookies/presente">

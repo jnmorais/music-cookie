@@ -11,9 +11,9 @@ export default function PaginaResultados() {
     <>
       <section className="cabecalho-pagina">
         <div className="container">
-          <span className="sobretitulo">Feira · Indicadores</span>
+          <span className="sobretitulo">Feira · Resultados</span>
           <h1>Painel ao vivo</h1>
-          <p className="lead">Atualização automática a cada 10 segundos. Indicado para exibição em TV ou projetor.</p>
+          <p className="lead">Atualiza sozinho a cada 10 segundos — dá para deixar aberto numa TV ou projetor.</p>
         </div>
       </section>
       <section className="secao">
