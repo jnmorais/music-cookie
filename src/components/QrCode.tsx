@@ -35,6 +35,6 @@ export default function QrCode({ valor, tamanho = 512, className, alt = "QR Code
     // onGerado é um callback de notificação; não deve disparar nova geração
   }, [valor, tamanho, cor]);
 
-  if (!src) return <div className={className} aria-hidden style={{ aspectRatio: "1", background: "#f1f3f6", ...style }} />;
+  if (!src) return <div className={className} aria-hidden style={{ aspectRatio: "1", background: "var(--superficie-2)", ...style }} />;
   return <img src={src} alt={alt} className={className} width={tamanho} height={tamanho} style={style} />;
 }

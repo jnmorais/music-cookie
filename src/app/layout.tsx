@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { scriptTema } from "@/lib/tema";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,7 +23,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={geistSans.variable}>
+    <html lang="pt-BR" className={geistSans.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+      </head>
       <body>{children}</body>
     </html>
   );

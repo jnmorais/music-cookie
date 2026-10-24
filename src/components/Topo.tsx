@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Acessibilidade from "./Acessibilidade";
+import AlternarTema from "./AlternarTema";
 
 const links = [
   { href: "/", texto: "Início" },
@@ -30,7 +30,7 @@ export default function Topo() {
             </Link>
           ))}
         </nav>
-        <Acessibilidade />
+        <AlternarTema />
       </div>
     </header>
   );
