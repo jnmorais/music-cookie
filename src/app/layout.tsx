@@ -9,11 +9,11 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: {
-    default: "Music Cookies · Feira de Empreendedorismo",
+    default: "Music Cookies — Cookies com trilha sonora",
     template: "%s · Music Cookies",
   },
   description:
-    "Presentes musicais com QR Code para a Music Cookies e portal digital da Feira de Empreendedorismo (03/11): mapa, expositores, votação e painel.",
+    "Cookies artesanais que viram presente: escolha uma música do Spotify, escreva uma mensagem e gere o QR Code da embalagem.",
 };
 
 export const viewport: Viewport = {

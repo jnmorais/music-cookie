@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Topo from "@/components/Topo";
-import { equipe } from "@/lib/config";
+import { equipe, FEIRA_URL } from "@/lib/config";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,17 +13,17 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <footer className="rodape">
         <div className="container rodape-inner">
           <div>
-            <strong style={{ color: "var(--texto)" }}>Music Cookies · Feira de Empreendedorismo</strong>
+            <strong style={{ color: "var(--texto)" }}>Music Cookies</strong>
             <div>
               Projeto acadêmico — {equipe.curso}. Suporte: {equipe.contatoNome}
               {equipe.contatoEmail && <> · {equipe.contatoEmail}</>}
             </div>
           </div>
           <nav aria-label="Rodapé">
-            <Link href="/music-cookies/presente">Presente musical</Link>
-            <Link href="/feira">Feira</Link>
-            <Link href="/feira/qrcodes">Material impresso</Link>
+            <Link href="/presente">Presente musical</Link>
+            <Link href="/#cardapio">Cardápio</Link>
             <Link href="/proposta">Proposta</Link>
+            <a href={FEIRA_URL}>Feira de Empreendedorismo</a>
           </nav>
         </div>
       </footer>

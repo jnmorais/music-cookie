@@ -26,7 +26,7 @@ export default function AbrirPresente() {
           <div className="presente-corpo">
             <h1 style={{ fontSize: "1.35rem" }}>Presente não encontrado</h1>
             <p style={{ color: "#5b6472" }}>O link parece incompleto. Escaneie o QR Code novamente.</p>
-            <Link className="botao" href="/music-cookies">
+            <Link className="botao" href="/">
               Conhecer a Music Cookies
             </Link>
           </div>
@@ -93,7 +93,7 @@ export default function AbrirPresente() {
           <div style={{ borderTop: "1px solid #ece8e3", padding: "18px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
             <span className="pequeno" style={{ color: "#5b6472" }}>{musicCookies.slogan}</span>
             <div className="botoes">
-              <Link className="botao pequeno" href="/music-cookies/presente">
+              <Link className="botao pequeno" href="/presente">
                 Enviar um presente
               </Link>
               {musicCookies.instagram && (

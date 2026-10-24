@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BotaoImprimir from "@/components/BotaoImprimir";
-import { equipe, feira } from "@/lib/config";
+import { equipe, FEIRA_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Proposta — Demandas 1A e 1B",
-  description: "Problema, solução, implementação e nível de entrega das soluções para a Music Cookies e para a Feira.",
+  title: "Proposta — Demanda 1A",
+  description: "Problema, solução, implementação e nível de entrega do presente musical da Music Cookies.",
 };
 
 export default function Proposta() {
@@ -13,11 +13,11 @@ export default function Proposta() {
     <>
     <section className="cabecalho-pagina">
       <div className="container" style={{ maxWidth: 880 }}>
-        <span className="sobretitulo">Atividade 1 · Soluções para as empresas e para a feira</span>
+        <span className="sobretitulo">Atividade 1 · Demanda 1A — Solução para uma empresa</span>
         <h1>Proposta técnica</h1>
         <p className="lead">
-          Grupo de {equipe.curso}. Uma atividade com duas demandas complementares; as duas soluções estão implementadas
-          e publicadas neste site.
+          Grupo de {equipe.curso}. A solução está implementada e publicada neste site. A Demanda 1B (portal da
+          feira) está em um projeto separado: <a href={FEIRA_URL}>{FEIRA_URL.replace(/^https?:\/\//, "")}</a>.
         </p>
         <div className="botoes nao-imprimir">
           <BotaoImprimir className="botao secundario pequeno" texto="Imprimir / salvar em PDF" />
@@ -58,7 +58,7 @@ export default function Proposta() {
             <ol>
               <li>
                 O cliente (ou o vendedor, na banca) abre{" "}
-                <Link href="/music-cookies/presente">/music-cookies/presente</Link> pelo celular.
+                <Link href="/presente">/presente</Link> pelo celular.
               </li>
               <li>Preenche os campos; o link do Spotify é validado e o título/capa da música aparecem.</li>
               <li>
@@ -86,64 +86,6 @@ export default function Proposta() {
             <strong>Versão inicial funcional (MVP) publicada.</strong> Já é possível criar, imprimir, enviar e abrir
             presentes reais. Próximos passos possíveis: personalizar cores/identidade com o grupo, confirmar sabores e
             preços, adicionar número de WhatsApp e Instagram oficiais e testar a impressão no tamanho da embalagem.
-          </dd>
-        </dl>
-
-        <h2>Demanda 1B — Portal digital da Feira de Empreendedorismo</h2>
-        <dl>
-          <dt>Para quem</dt>
-          <dd>
-            Visitantes (alunos, familiares e público externo), grupos expositores e organização da Feira de{" "}
-            {feira.dataTexto}, {feira.horario}, no {feira.local.toLowerCase()}.
-          </dd>
-
-          <dt>Problema / oportunidade</dt>
-          <dd>
-            A feira dura duas horas e meia, com pico no intervalo. O visitante não sabe de antemão quem está expondo,
-            onde fica cada banca nem o que cada uma vende; os grupos não têm um canal único de divulgação; e a
-            organização não tem um jeito rápido de medir a opinião do público.
-          </dd>
-
-          <dt>Solução proposta</dt>
-          <dd>
-            Um <strong>portal web acessado por QR Code</strong>, sem instalar app:
-            <ul>
-              <li>
-                <Link href="/feira">Página da feira</Link> com informações e contagem regressiva;
-              </li>
-              <li>
-                <Link href="/feira">Página de cada expositor</Link>, com resumo e produtos;
-              </li>
-              <li>
-                <Link href="/feira/mapa">Mapa interativo</Link> das bancas, incluindo o ponto de Suporte TI;
-              </li>
-              <li>
-                <Link href="/feira/votar">Votação</Link> na banca favorita + nota da feira + sugestões (1 voto por
-                aparelho);
-              </li>
-              <li>
-                <Link href="/feira/resultados">Painel ao vivo</Link> para TV/projetor, com ranking e QR para votar;
-              </li>
-              <li>
-                <Link href="/feira/qrcodes">Folha de QR Codes</Link> pronta para imprimir (entrada, mesas e uma placa
-                por banca);
-              </li>
-              <li>Acessibilidade: texto maior, alto contraste, navegação por teclado e leitores de tela.</li>
-            </ul>
-          </dd>
-
-          <dt>Como será implementado</dt>
-          <dd>
-            Mesmo projeto Next.js na Vercel. Os votos são gravados no Upstash Redis (integração gratuita da Vercel) por
-            uma API própria que valida os dados e impede voto duplicado do mesmo aparelho. Os comentários ficam visíveis
-            apenas para a organização (painel com chave de acesso). No dia: QR Codes impressos na entrada e nas bancas,
-            painel em uma TV/notebook e alunos de SI/ES na banca de suporte.
-          </dd>
-
-          <dt>Nível de implementação</dt>
-          <dd>
-            <strong>Versão inicial funcional publicada.</strong> Falta apenas confirmar com a organização a disposição
-            real das mesas no pátio (ajustável em um arquivo) e conectar o banco de votos na Vercel.
           </dd>
         </dl>
 

@@ -93,7 +93,7 @@ export default function Pedido() {
           </button>
         )}
         {presente && (
-          <Link className="botao secundario largo" href="/music-cookies/presente">
+          <Link className="botao secundario largo" href="/presente">
             Criar etiqueta de presente
           </Link>
         )}

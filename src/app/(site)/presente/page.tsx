@@ -13,7 +13,7 @@ export default function PaginaPresente() {
       <section className="cabecalho-pagina nao-imprimir">
         <div className="container">
           <nav className="migalhas" aria-label="Navegação estrutural">
-            <Link href="/music-cookies">Music Cookies</Link>
+            <Link href="/">Music Cookies</Link>
             <span aria-hidden>/</span>
             <span>Presente musical</span>
           </nav>
