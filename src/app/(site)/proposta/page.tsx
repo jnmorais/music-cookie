@@ -91,8 +91,6 @@ export default function Proposta() {
 
         <h2>Contato para suporte e continuidade</h2>
         <dl>
-          <dt>Responsável</dt>
-          <dd>{equipe.contatoNome}</dd>
           {equipe.contatoEmail && (
             <>
               <dt>E-mail</dt>
