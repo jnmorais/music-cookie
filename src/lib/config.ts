@@ -6,7 +6,7 @@ export const equipe = {
   contatoNome: "Jean Morais",
   contatoEmail: "", // ex.: "seuemail@exemplo.com"
   contatoWhatsapp: "", // só números com DDI+DDD, ex.: "5511999999999"
-  integrantes: ["Jean Morais"], // adicione os demais integrantes do grupo
+  integrantes: ["Jean Morais", "Pedro Atalaia", "Augusto Sergio", "Felipe Tavares"],
 };
 
 export const musicCookies = {
